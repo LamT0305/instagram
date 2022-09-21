@@ -5,6 +5,7 @@ import Stories from './Components/Home/Stories';
 import Post from './Components/Home/Post';
 import {POSTS} from './data/post';
 
+
 const HomeScreen = ()=> {
   return (
     <SafeAreaView style={styles.container}>
@@ -15,6 +16,7 @@ const HomeScreen = ()=> {
           return <Post post={post} key={index} />;
         })}
       </ScrollView>
+      <BottomTab></BottomTab>
     </SafeAreaView>
   );
 };
