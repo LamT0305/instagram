@@ -13,7 +13,7 @@ import {FooterIcons} from '../../data/footerIcon';
 const Post = ({post}) => {
   return (
     <View style={styles.container}>
-      <Divider width={1} orientation="horizontal" style={{color: 'black'}} />
+      <Divider width={1} orientation="horizontal" />
       <PostHeader post={post} />
       <Postimage post={post} />
       <View style={{marginTop: 5}}>
