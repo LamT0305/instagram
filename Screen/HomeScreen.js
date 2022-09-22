@@ -6,13 +6,12 @@ import Post from '../Components/Home/Post';
 import {POSTS} from '../data/post';
 import BottomTabs, {bottomTabIcons} from '../Components/Home/BottomTabs';
 
-
-const HomeScreen = ()=> {
+const HomeScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>     
+    <SafeAreaView style={styles.container}>
       <HeaderInsta />
       <ScrollView>
-      <Stories />     
+        <Stories />
         {POSTS.map((post, index) => {
           return <Post post={post} key={index} />;
         })}
@@ -21,10 +20,10 @@ const HomeScreen = ()=> {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     flex: 1,
   },
 });
-export default HomeScreen
+export default HomeScreen;

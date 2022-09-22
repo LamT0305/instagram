@@ -34,7 +34,6 @@ export const bottomTabIcons = [
 
 const BottomTabs = ({icons}) => {
   const [activeTab, setActiveTab] = useState('Home');
-
   const Icon = ({icon}) => (
     <TouchableOpacity onPress={() => setActiveTab(icon.name)}>
       <Image

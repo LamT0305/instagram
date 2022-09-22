@@ -13,6 +13,6 @@ export const FooterIcons = [
     },
     {
         name:'Save',
-        imageurl:'https://img.icons8.com/ios/32/000000/bookmark-ribbon--v1.png'
-    }
+        imageurl:'https://img.icons8.com/ios/32/000000/bookmark-ribbon--v1.png',
+    },
 ]

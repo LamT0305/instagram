@@ -21,7 +21,7 @@ export const POSTS = [
 
   {
     imageurl:
-      'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+      'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg', 
     user: USERS[1].user,
     like: '7878',
     caption: 'Red Sky',

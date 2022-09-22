@@ -1,11 +1,11 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
-
+import AddNewPost from '../Components/NewPost/AddNewPost'
 const NewPostScreen = () => {
   return (
-    <View>
-      <Text>NewPostScreen</Text>
-    </View>
+    <SafeAreaView>
+      <AddNewPost/>
+    </SafeAreaView>
   )
 }
 

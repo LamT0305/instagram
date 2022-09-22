@@ -1,19 +1,12 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  style,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import React from 'react';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import React, {useState, useRef} from 'react';
 import {Divider} from 'react-native-elements';
 import {FooterIcons} from '../../data/footerIcon';
-
+import {POSTS} from '../../data/post';
 const Post = ({post}) => {
   return (
     <View style={styles.container}>
-      <Divider width={1} orientation="horizontal" />
+      <Divider width={1} />
       <PostHeader post={post} />
       <Postimage post={post} />
       <View style={{marginTop: 5}}>
@@ -46,19 +39,23 @@ const PostHeader = ({post}) => (
   </View>
 );
 
-const Postimage = ({post}) => (
-  <View style={{width: '100%', height: 300}}>
-    <Image
-      source={{uri: post.imageurl}}
-      style={{height: '100%', resizeMode: 'cover'}}
-    />
-  </View>
-);
+const Postimage = ({post}) => {
+  return (
+    <View style={{width: '100%', height: 300}}>
+      <TouchableOpacity activeOpacity={1}>
+        <Image
+          source={{uri: post.imageurl}}
+          style={{height: '100%', resizeMode: 'cover'}}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const Postfooter = () => (
   <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
     <View style={{flexDirection: 'row'}}>
-      <Icon imgstyle={styles.FooterIcon} imgurl={FooterIcons[0].imageurl} />
+      <IconLikeReact />
       <Icon imgstyle={styles.FooterIcon} imgurl={FooterIcons[1].imageurl} />
       <Icon imgstyle={styles.FooterIcon} imgurl={FooterIcons[2].imageurl} />
     </View>
@@ -74,14 +71,21 @@ const Icon = ({imgstyle, imgurl}) => (
   </TouchableOpacity>
 );
 
-const Likes = ({post}) => (
-  <View>
-    <Text
-      style={{fontWeight: '700', fontSize: 15, color: 'black', marginLeft: 5}}>
-      {post.like} Likes{' '}
-    </Text>
-  </View>
-);
+const Likes = ({post}) => {
+  return (
+    <View>
+      <Text
+        style={{
+          fontWeight: '700',
+          fontSize: 15,
+          color: 'black',
+          marginLeft: 5,
+        }}>
+        {post.like} Likes{' '}
+      </Text>
+    </View>
+  );
+};
 
 const Captions = ({post}) => (
   <View style={{flexDirection: 'row', marginLeft: 5}}>
@@ -93,28 +97,54 @@ const Captions = ({post}) => (
 );
 
 const CommentSection = ({post}) => (
-  <View style={{marginLeft:5,}}>
-    {!!post.comment.length && (<Text style={{color:'grey'}}>
-      View {post.comment.length > 1? 'all' : ''} {post.comment.length}{' '}
-      {post.comment.length > 1 ? 'comments' : 'comment'}</Text>)}  
+  <View style={{marginLeft: 5}}>
+    {!!post.comment.length && (
+      <Text style={{color: 'grey'}}>
+        View {post.comment.length > 1 ? 'all' : ''} {post.comment.length}{' '}
+        {post.comment.length > 1 ? 'comments' : 'comment'}
+      </Text>
+    )}
   </View>
 );
 
-const Comment =({post})=>(
-    <View>
-      {post.comment.map((comment, index) => (
-        <View key={index} style={{marginLeft:5}}>
-          <Text style={{color:'black'}}>
-            <Text style={{fontWeight:'bold'}}>{comment.user}</Text> {' '}
-            {comment.comment}
-          </Text>
-        </View>
-      ))}
-    </View>
-)
+const Comment = ({post}) => (
+  <View>
+    {post.comment.map((comment, index) => (
+      <View key={index} style={{marginLeft: 5}}>
+        <Text style={{color: 'black'}}>
+          <Text style={{fontWeight: 'bold'}}>{comment.user}</Text>{' '}
+          {comment.comment}
+        </Text>
+      </View>
+    ))}
+  </View>
+);
 //A.) 0 comment => Don't render component
 //B.) 1 comment => Render component without "all" and singular comment
 //C.) more than 1 => render component with "all" and plural comments
+
+const IconLikeReact = ({post}) => {
+  const [react, setReact] = useState(true);
+  const onPressed = () => {
+    setReact(!react);
+  };
+  return (
+    <TouchableOpacity onPress={onPressed}>
+      {react ? (
+        <Image
+          source={{uri: FooterIcons[0].imageurl}}
+          style={styles.FooterIcon}
+        />
+      ) : (
+        <Image
+          source={require('../../assets/Post/red_heart.png')}
+          style={styles.FooterIcon}
+        />
+      )}
+    </TouchableOpacity>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
     marginBottom: 30,
