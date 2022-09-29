@@ -1,21 +1,22 @@
 import {SafeAreaView, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
-import HeaderInsta from '../Components/Home/HeaderInsta';
-import Stories from '../Components/Home/Stories';
-import Post from '../Components/Home/Post';
-import {POSTS} from '../data/post';
-import BottomTabs, {bottomTabIcons} from '../Components/Home/BottomTabs';
-
-const HomeScreen = () => {
+import HeaderInsta from '../components/home/HeaderInsta';
+import Stories from '../components/home/Stories';
+import Post from '../components/home/post/Post';
+import {POSTS} from '../data/Post';
+import BottomTabs from '../components/home/BottomTabs';
+import {bottomTabIcons} from '../data/BottomTabIcons';
+import {FlashList} from '@shopify/flash-list';
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <HeaderInsta />
-      <ScrollView>
-        <Stories />
-        {POSTS.map((post, index) => {
-          return <Post post={post} key={index} />;
-        })}
-      </ScrollView>
+      <HeaderInsta navigation={navigation} />
+      <Stories />
+      <FlashList
+        data={POSTS}
+        renderItem={post => <Post post={post.item} />}
+        estimatedItemSize={POSTS?.length | 50}
+      />
       <BottomTabs icons={bottomTabIcons} />
     </SafeAreaView>
   );

@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import React from 'react';
-import {USERS} from '../../data/user';
+import {USERS} from '../../data/User';
+import { styles } from './style/StoryStyle';
 const Stories = () => {
   return (
     <View style={{marginBottom: 13}}>
@@ -21,19 +22,5 @@ const Stories = () => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  story: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    marginHorizontal: 6,
-    borderWidth: 3,
-    borderColor: '#ff8501',
-  },
-  Text:{
-    color:'black',
-    marginHorizontal:6,
-    textAlign:'center',
-  }
-});
+
 export default Stories;

@@ -21,6 +21,6 @@ export const USERS = [
   },
   {
     user: 'lil_vivre',
-    image: 'https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/307300846_1701581533544287_8759827409139315155_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=Xr0Ai-sxQwoAX_ubQB_&_nc_ht=scontent.fhan14-1.fna&oh=00_AT_na5uyw8Xszp9sw1VpqQjUqYXMorgiMpVgqYeJxhwbRw&oe=632ED0F7',
+    image: 'https://scontent.fhan2-1.fna.fbcdn.net/v/t39.30808-6/307300846_1701581533544287_8759827409139315155_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=76dwoDU3MsAAX_uML2-&_nc_ht=scontent.fhan2-1.fna&oh=00_AT8h-v4hkIX3SnkXd_AizRNkFkIUHb0_eMKSofwy8Hm3zA&oe=6334BFB7',
   },
 ];
